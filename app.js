@@ -59,6 +59,7 @@ const styleSrcUrls = [
   "https://fonts.googleapis.com/",
   "https://use.fontawesome.com/",
   "https://cdn.jsdelivr.net",
+  "https://stackpath.bootstrapcdn.com/",
 ];
 const connectSrcUrls = [
   "https://api.mapbox.com/",
@@ -100,10 +101,12 @@ store.on("error", function (e) {
   console.log("SESSION STORE ERROR!");
 });
 
+const secret = process.env.SECRET || "thisshouldbeabettersecret!";
+
 const sessionConfig = {
   store,
   name: "session",
-  secret: "thisshouldbeabettersecret!",
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -153,3 +156,4 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log("LISTENING PORT NUMBER 3000!");
 });
+
